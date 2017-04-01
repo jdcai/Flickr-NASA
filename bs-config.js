@@ -6,6 +6,7 @@ module.exports = {
       "/node_modules": "node_modules"
     }
     },
+    open:false,
     notify : false
 
 
