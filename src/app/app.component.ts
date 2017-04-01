@@ -39,7 +39,7 @@ import { FlickrService } from './flickr.service';
              </div>`,
 })
 export class AppComponent implements OnInit { 
-    const sortKeys: string[] = ["Date posted", "Date taken", ];
+    sortKeys: string[] = ["Date posted", "Date taken", ];
 
     name = 'NASA'; 
     photos: Object[];
