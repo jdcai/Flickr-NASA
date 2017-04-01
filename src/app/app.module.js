@@ -7,7 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
+var flickr_service_1 = require("./flickr.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -15,9 +17,15 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule],
-        declarations: [app_component_1.AppComponent],
-        bootstrap: [app_component_1.AppComponent]
+        imports: [
+            platform_browser_1.BrowserModule,
+            http_1.HttpModule
+        ],
+        declarations: [
+            app_component_1.AppComponent,
+        ],
+        bootstrap: [app_component_1.AppComponent],
+        providers: [flickr_service_1.FlickrService]
     })
 ], AppModule);
 exports.AppModule = AppModule;
