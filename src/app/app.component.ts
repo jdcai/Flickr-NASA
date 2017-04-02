@@ -62,10 +62,6 @@ export class AppComponent implements OnInit {
             this.triggerGetPhotos();
     }
 
-    getPublicPhotos(): void {
-       this.flickrService.getPublicPhotos().subscribe(photos => this.photos = photos);
-    }
-    
     setSort(sortid: string): void {
         if(this.sortBy !== sortid)
         {

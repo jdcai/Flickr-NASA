@@ -59,10 +59,6 @@ var AppComponent = (function () {
         }).subscribe(function (photos) { return _this.photos = photos; });
         this.triggerGetPhotos();
     };
-    AppComponent.prototype.getPublicPhotos = function () {
-        var _this = this;
-        this.flickrService.getPublicPhotos().subscribe(function (photos) { return _this.photos = photos; });
-    };
     AppComponent.prototype.setSort = function (sortid) {
         if (this.sortBy !== sortid) {
             this.sortBy = sortid;
