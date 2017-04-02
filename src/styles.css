@@ -4,9 +4,19 @@ h1 {
   font-size: 250%;
 }
 
+.modal-image {
+    width:100%; 
+    padding-bottom:10px;
+}
+
+.modal {
+  background: rgba(0,0,0,0.6);
+}
+
 .img-container {
     display:inline-block; 
     margin: 3px;
+    cursor: pointer;
 }
 
 .img-container:hover .img-title {

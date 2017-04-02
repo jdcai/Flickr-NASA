@@ -17,13 +17,13 @@
 
  <div class="container-fluid" style="text-align:center; line-height:0; font-size:0">
       <span *ngFor="let photo of photos?.photo | paginate: { itemsPerPage: 12, currentPage: pageNumber, totalItems: photos?.total  }" >
-         <div class="img-container">
+         <div class="img-container" (click)="modal.show(photo)">
             <div class="img-title">{{photo.title}}</div>
-            <a href="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_b.jpg">
               <img align="left" src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" style="width:450px; height:252px; object-fit:cover">
-            </a>
         </div>
       </span>
     </div>
 
 <pagination-controls directionLinks="false" align="center" maxSize="20" (pageChange)="getPage($event)" class='my-pagination'></pagination-controls>
+  
+  <app-modal></app-modal>

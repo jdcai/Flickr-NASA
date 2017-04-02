@@ -10,6 +10,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
 var ng2_pagination_1 = require("ng2-pagination");
 var app_component_1 = require("./app.component");
+var modal_component_1 = require("./modal.component");
 var flickr_service_1 = require("./flickr.service");
 var AppModule = (function () {
     function AppModule() {
@@ -25,6 +26,7 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_1.AppComponent,
+            modal_component_1.ModalComponent
         ],
         bootstrap: [app_component_1.AppComponent],
         providers: [flickr_service_1.FlickrService]

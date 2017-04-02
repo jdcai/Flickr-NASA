@@ -4,6 +4,7 @@ import { HttpModule }   from '@angular/http';
 import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { AppComponent }  from './app.component';
+import { ModalComponent } from './modal.component';
 
 import { FlickrService } from './flickr.service';
 
@@ -15,6 +16,7 @@ import { FlickrService } from './flickr.service';
                 ],
   declarations: [ 
                   AppComponent,
+                  ModalComponent
                   ],
   bootstrap:    [ AppComponent ],
   providers:    [ FlickrService ]

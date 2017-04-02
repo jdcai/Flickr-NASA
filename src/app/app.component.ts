@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
@@ -11,6 +11,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
+import { ModalComponent } from './modal.component';
 import { FlickrService } from './flickr.service';
 
 @Component({
@@ -18,6 +19,8 @@ import { FlickrService } from './flickr.service';
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit { 
+  @ViewChild(ModalComponent)
+  public readonly modal: ModalComponent;
     sortKeys= [{
                 id:"date-posted-desc",
                 value:"Date posted"

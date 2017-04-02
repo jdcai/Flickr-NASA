@@ -17,6 +17,7 @@ require("rxjs/add/observable/of");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/debounceTime");
 require("rxjs/add/operator/distinctUntilChanged");
+var modal_component_1 = require("./modal.component");
 var flickr_service_1 = require("./flickr.service");
 var AppComponent = (function () {
     function AppComponent(flickrService) {
@@ -79,6 +80,10 @@ var AppComponent = (function () {
     };
     return AppComponent;
 }());
+__decorate([
+    core_1.ViewChild(modal_component_1.ModalComponent),
+    __metadata("design:type", modal_component_1.ModalComponent)
+], AppComponent.prototype, "modal", void 0);
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',

@@ -16,7 +16,7 @@ require("rxjs/add/operator/map");
 var FlickrService = (function () {
     function FlickrService(http) {
         this.http = http;
-        this.flickrUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a5e95177da353f58113fd60296e1d250&user_id=24662369@N07&per_page=12&format=json&nojsoncallback=1'; // URL to web api
+        this.flickrUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a5e95177da353f58113fd60296e1d250&user_id=24662369@N07&per_page=12&extras=description&format=json&nojsoncallback=1'; // URL to web api
     }
     FlickrService.prototype.getPublicPhotos = function () {
         return this.http.get(this.flickrUrl)
