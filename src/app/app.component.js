@@ -11,10 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var Subject_1 = require("rxjs/Subject");
 // Observable class extensions
-require("rxjs/Rx");
 require("rxjs/add/observable/of");
 // Observable operators
 require("rxjs/add/operator/catch");
+require("rxjs/add/operator/switchMap");
 require("rxjs/add/operator/debounceTime");
 require("rxjs/add/operator/distinctUntilChanged");
 var modal_component_1 = require("./modal.component");
