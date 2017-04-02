@@ -17,21 +17,31 @@ import { FlickrService } from './flickr.service';
   selector: 'my-app',
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit, OnChanges { 
-    sortKeys: string[] = ["Date posted", "Date taken", ];
+export class AppComponent implements OnInit { 
+    sortKeys= [{
+                id:"date-posted-desc",
+                value:"Date posted"
+                }, 
+                {
+                 id:"date-taken-desc",
+                 value:"Date taken"
+              }];
     name = 'NASA'; 
     photos: Object[];
     private searchTerms = new Subject<string>();
+    pageNumber: number = 1;
+    searchTerm = "";
+    sortBy = "date-posted-desc";
     
     search(term: string): void {
-        this.searchTerms.next(term);
+        this.searchTerm = term;
+        this.triggerGetPhotos();
     }
     
     constructor(private flickrService: FlickrService) { }
     
     ngOnInit(): void {
         this.getPublicPhotos();
-        console.log(this.photos);
         this.searchTerms
             .debounceTime(300)        // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged()   // ignore if next search term is same as previous
@@ -41,5 +51,20 @@ export class AppComponent implements OnInit, OnChanges {
 
     getPublicPhotos(): void {
        this.flickrService.getPublicPhotos().subscribe(photos => this.photos = photos);
+    }
+    
+    setSort(id: string): void {
+        this.sortBy = id;
+        this.triggerGetPhotos();
+    }
+    
+    getPage(page: number) {
+        this.pageNumber = page;
+        this.triggerGetPhotos();
+    }
+    
+    triggerGetPhotos()
+    {
+        this.searchTerms.next(this.searchTerm + "&sort=" + this.sortBy + "&page=" + this.pageNumber);
     }
 }

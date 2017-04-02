@@ -9,14 +9,14 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <li *ngFor="let key of sortKeys"><a (click)="setSort()">{{key}}</a></li>
+          <li *ngFor="let key of sortKeys"><a (click)="setSort(key.id)">{{key.value}}</a></li>
         </ul>
       </div>
     </div>
 </div>
 
  <div class="container-fluid" align="center" style="line-height:0; font-size:0">
-      <span *ngFor="let photo of photos?.photo" >
+      <span *ngFor="let photo of photos?.photo | paginate: { itemsPerPage: 12, currentPage: pageNumber, totalItems: photos?.total  }" >
          <div style="display:inline-block; margin: 3px">
           <div style="float:left; background-color:black; ">
             <a href="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg">
@@ -26,3 +26,5 @@
         </div>
       </span>
     </div>
+
+<pagination-controls align="center" (pageChange)="getPage($event)" class='my-pagination'></pagination-controls>

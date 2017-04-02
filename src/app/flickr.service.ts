@@ -7,8 +7,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FlickrService {
-  //private flickrUrl = 'https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=a5e95177da353f58113fd60296e1d250&user_id=24662369@N07&format=json&nojsoncallback=1';  // URL to web api
-  private flickrUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a5e95177da353f58113fd60296e1d250&user_id=24662369@N07&format=json&nojsoncallback=1';  // URL to web api
+  private flickrUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a5e95177da353f58113fd60296e1d250&user_id=24662369@N07&per_page=12&format=json&nojsoncallback=1';  // URL to web api
 
   constructor (private http: Http) {}
   
@@ -44,4 +43,6 @@ export class FlickrService {
                .map(this.extractData)
                .catch(this.handleError);
   }
+  
+
 }

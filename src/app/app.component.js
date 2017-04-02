@@ -21,17 +21,27 @@ var flickr_service_1 = require("./flickr.service");
 var AppComponent = (function () {
     function AppComponent(flickrService) {
         this.flickrService = flickrService;
-        this.sortKeys = ["Date posted", "Date taken",];
+        this.sortKeys = [{
+                id: "date-posted-desc",
+                value: "Date posted"
+            },
+            {
+                id: "date-taken-desc",
+                value: "Date taken"
+            }];
         this.name = 'NASA';
         this.searchTerms = new Subject_1.Subject();
+        this.pageNumber = 1;
+        this.searchTerm = "";
+        this.sortBy = "date-posted-desc";
     }
     AppComponent.prototype.search = function (term) {
-        this.searchTerms.next(term);
+        this.searchTerm = term;
+        this.triggerGetPhotos();
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.getPublicPhotos();
-        console.log(this.photos);
         this.searchTerms
             .debounceTime(300) // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged() // ignore if next search term is same as previous
@@ -42,14 +52,24 @@ var AppComponent = (function () {
     AppComponent.prototype.getPublicPhotos = function () {
         var _this = this;
         this.flickrService.getPublicPhotos().subscribe(function (photos) { return _this.photos = photos; });
-        //this.photos = this.flickrService.getPublicPhotos();
+    };
+    AppComponent.prototype.setSort = function (id) {
+        this.sortBy = id;
+        this.triggerGetPhotos();
+    };
+    AppComponent.prototype.getPage = function (page) {
+        this.pageNumber = page;
+        this.triggerGetPhotos();
+    };
+    AppComponent.prototype.triggerGetPhotos = function () {
+        this.searchTerms.next(this.searchTerm + "&sort=" + this.sortBy + "&page=" + this.pageNumber);
     };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "<div class=\"container\">\n      <form style=\"margin-top:15px\">\n        <div class=\"form-group row\">\n          <div class=\"col-md-11\">\n          <input #searchBox id=\"search-box\" (keyup)=\"search(searchBox.value)\" type=\"text\" class=\"form-control\" placeholder=\"Search\"></div>\n          <div class=\"dropdown col-md-1\">\n            <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" data-toggle=\"dropdown\">\n              Sort By\n              <span class=\"caret\"></span>\n            </button>\n            <ul class=\"dropdown-menu\">\n              <li *ngFor=\"let key of sortKeys\"><a (click)=\"setSort()\">{{key}}</a></li>\n            </ul>\n          </div>\n        </div>\n      </form>\n    </div>\n\n             <div clss=\"example-default\" *ngFor=\"let photo of photos?.photo\" style=\"display:inline\">\n             <img src=\"https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg\">\n             \n             </div>",
+        templateUrl: './app.component.html',
     }),
     __metadata("design:paramtypes", [flickr_service_1.FlickrService])
 ], AppComponent);
