@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="form-group row" style="margin-top:15px">
+      <div class="col-md-11">
+        <input #searchBox id="search-box" (keyup)="search(searchBox.value)" type="text" class="form-control" placeholder="Search">
+      </div>
+      <div class="dropdown col-md-1">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+          Sort By
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let key of sortKeys"><a (click)="setSort()">{{key}}</a></li>
+        </ul>
+      </div>
+    </div>
+</div>
+
+ <div class="container-fluid" align="center" style="line-height:0; font-size:0">
+      <span *ngFor="let photo of photos?.photo" >
+         <div style="display:inline-block; margin: 3px">
+          <div style="float:left; background-color:black; ">
+            <a href="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg">
+              <img align="left" src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" style="width:450px; height:252px; object-fit:cover">
+            </a>
+          </div>
+        </div>
+      </span>
+    </div>
