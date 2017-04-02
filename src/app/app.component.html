@@ -9,13 +9,13 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <li *ngFor="let key of sortKeys"><a (click)="setSort(key.id)">{{key.value}}</a></li>
+          <li [ngClass]="{'active' : key.id === sortBy}" *ngFor="let key of sortKeys"><a (click)="setSort(key.id)">{{key.value}}</a></li>
         </ul>
       </div>
     </div>
 </div>
 
- <div class="container-fluid" align="center" style="line-height:0; font-size:0">
+ <div class="container-fluid" style="text-align:center; line-height:0; font-size:0">
       <span *ngFor="let photo of photos?.photo | paginate: { itemsPerPage: 12, currentPage: pageNumber, totalItems: photos?.total  }" >
          <div style="display:inline-block; margin: 3px">
           <div style="float:left; background-color:black; ">

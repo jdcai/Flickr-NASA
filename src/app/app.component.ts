@@ -25,7 +25,16 @@ export class AppComponent implements OnInit {
                 {
                  id:"date-taken-desc",
                  value:"Date taken"
-              }];
+                },
+                {
+                 id:"interestingness-desc",
+                 value:"Interesting"
+                },
+                {
+                 id:"relevance",
+                 value:"Relevant"
+                },
+              ];
     name = 'NASA'; 
     photos: Object[];
     private searchTerms = new Subject<string>();

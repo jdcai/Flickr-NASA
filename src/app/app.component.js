@@ -28,7 +28,16 @@ var AppComponent = (function () {
             {
                 id: "date-taken-desc",
                 value: "Date taken"
-            }];
+            },
+            {
+                id: "interestingness-desc",
+                value: "Interesting"
+            },
+            {
+                id: "relevance",
+                value: "Relevant"
+            },
+        ];
         this.name = 'NASA';
         this.searchTerms = new Subject_1.Subject();
         this.pageNumber = 1;
