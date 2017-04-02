@@ -33,14 +33,14 @@ var ModalComponent = (function () {
         this.description = '';
         this.photoid = '';
         this.visibleAnimate = false;
-        setTimeout(function () { return _this.visible = false; }, 300);
+        setTimeout(function () { return _this.visible = false; });
     };
     return ModalComponent;
 }());
 ModalComponent = __decorate([
     core_1.Component({
         selector: 'app-modal',
-        template: "\n  <div (click)=\"hide()\" class=\"modal fade\" tabindex=\"-1\" [ngClass]=\"{'in': visibleAnimate}\"\n       [ngStyle]=\"{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}\">\n    <div class=\"modal-dialog modal-lg\">\n      <div class=\"modal-content\" (click)=\"$event.stopPropagation();\">\n        <div class=\"modal-header\">\n            <h4 class=\"modal-title\">\n                {{title}}\n            </h4>\n        </div>\n        <div class=\"modal-body\">\n          <img class=\"modal-image\" src=\"{{imageUrl}}\">\n          <div style=\"white-space:pre-wrap;\" [innerHtml]=\"description\"></div>\n        </div>\n        <div class=\"modal-footer\" >\n            <button type=\"button\" class=\"btn btn-default\" (click)=\"hide()\">Close</button>\n            <a href=\"https://www.flickr.com/photos/{{userid}}/{{photoid}}\" type=\"button\" class=\"btn btn-primary\">View on Flickr</a>\n        </div>\n      </div>\n    </div>\n  </div>\n  "
+        template: "\n  <div (click)=\"hide()\" class=\"modal fade\" tabindex=\"-1\" [ngClass]=\"{'in': visibleAnimate}\"\n       [ngStyle]=\"{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}\">\n    <div class=\"modal-dialog modal-lg\">\n      <div class=\"modal-content\" (click)=\"$event.stopPropagation();\">\n        <div class=\"modal-header\">\n            <h4 class=\"modal-title\">\n                {{title}}\n            </h4>\n        </div>\n        <div class=\"modal-body\">\n          <img class=\"modal-image\" src=\"{{imageUrl}}\">\n          <div style=\"white-space:pre-wrap;\" [innerHtml]=\"description\"></div>\n        </div>\n        <div class=\"modal-footer\" >\n            <button type=\"button\" class=\"btn btn-default\" (click)=\"hide()\">Close</button>\n            <a href=\"https://www.flickr.com/photos/{{userid}}/{{photoid}}\" target=\"_blank\" type=\"button\" class=\"btn btn-primary\">View on Flickr</a>\n        </div>\n      </div>\n    </div>\n  </div>\n  "
     })
 ], ModalComponent);
 exports.ModalComponent = ModalComponent;

@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
                  value:"Relevant"
                 },
               ];
-    name = 'NASA'; 
+              
     photos: Object[];
     private searchTerms = new Subject<string>();
     pageNumber: number = 1;
@@ -54,12 +54,12 @@ export class AppComponent implements OnInit {
     constructor(private flickrService: FlickrService) { }
     
     ngOnInit(): void {
-        this.getPublicPhotos();
         this.searchTerms
             .debounceTime(300)        // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged()   // ignore if next search term is same as previous
             .switchMap(term =>    // switch to new observable each time the term changes
             this.flickrService.search(term)).subscribe(photos => this.photos = photos); 
+            this.triggerGetPhotos();
     }
 
     getPublicPhotos(): void {

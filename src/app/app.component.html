@@ -16,10 +16,11 @@
 </div>
 
  <div class="container-fluid" style="text-align:center; line-height:0; font-size:0">
-      <span *ngFor="let photo of photos?.photo | paginate: { itemsPerPage: 12, currentPage: pageNumber, totalItems: photos?.total  }" >
-         <div class="img-container" (click)="modal.show(photo)">
+     <h1 *ngIf="photos?.photo?.length === 0">Sorry, there are no results.</h1>
+      <span (click)="modal.show(photo)" *ngFor="let photo of photos?.photo | paginate: { itemsPerPage: 12, currentPage: pageNumber, totalItems: photos?.total  }" >
+         <div class="img-container" >
             <div class="img-title">{{photo.title}}</div>
-              <img align="left" src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" style="width:450px; height:252px; object-fit:cover">
+              <img align="left" src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" style="width:450px; height:252px; object-fit:cover; ">
         </div>
       </span>
     </div>

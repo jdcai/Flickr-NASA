@@ -11,15 +11,8 @@ export class FlickrService {
 
   constructor (private http: Http) {}
   
-  getPublicPhotos(): Observable<Object[]> {
-    return this.http.get(this.flickrUrl)
-                    .map(this.extractData)
-                    .catch(this.handleError);
-  }
-  
   private extractData(res: Response) {
     let body = res.json();
-    console.log(body.photos);
     return body.photos;
   }
   

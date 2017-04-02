@@ -39,7 +39,6 @@ var AppComponent = (function () {
                 value: "Relevant"
             },
         ];
-        this.name = 'NASA';
         this.searchTerms = new Subject_1.Subject();
         this.pageNumber = 1;
         this.searchTerm = "";
@@ -52,13 +51,13 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.getPublicPhotos();
         this.searchTerms
             .debounceTime(300) // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged() // ignore if next search term is same as previous
             .switchMap(function (term) {
             return _this.flickrService.search(term);
         }).subscribe(function (photos) { return _this.photos = photos; });
+        this.triggerGetPhotos();
     };
     AppComponent.prototype.getPublicPhotos = function () {
         var _this = this;

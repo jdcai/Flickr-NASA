@@ -18,7 +18,7 @@ import { Component } from '@angular/core';
         </div>
         <div class="modal-footer" >
             <button type="button" class="btn btn-default" (click)="hide()">Close</button>
-            <a href="https://www.flickr.com/photos/{{userid}}/{{photoid}}" type="button" class="btn btn-primary">View on Flickr</a>
+            <a href="https://www.flickr.com/photos/{{userid}}/{{photoid}}" target="_blank" type="button" class="btn btn-primary">View on Flickr</a>
         </div>
       </div>
     </div>
@@ -52,6 +52,6 @@ export class ModalComponent {
     this.description = '';
     this.photoid = '';
     this.visibleAnimate = false;
-    setTimeout(() => this.visible = false, 300);
+    setTimeout(() => this.visible = false);
   }
 }
