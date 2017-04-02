@@ -46,6 +46,7 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.search = function (term) {
         this.searchTerm = term;
+        this.pageNumber = 1;
         this.triggerGetPhotos();
     };
     AppComponent.prototype.ngOnInit = function () {
@@ -62,9 +63,12 @@ var AppComponent = (function () {
         var _this = this;
         this.flickrService.getPublicPhotos().subscribe(function (photos) { return _this.photos = photos; });
     };
-    AppComponent.prototype.setSort = function (id) {
-        this.sortBy = id;
-        this.triggerGetPhotos();
+    AppComponent.prototype.setSort = function (sortid) {
+        if (this.sortBy !== sortid) {
+            this.sortBy = sortid;
+            this.pageNumber = 1;
+            this.triggerGetPhotos();
+        }
     };
     AppComponent.prototype.getPage = function (page) {
         this.pageNumber = page;

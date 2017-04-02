@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
     
     search(term: string): void {
         this.searchTerm = term;
+        this.pageNumber = 1;
         this.triggerGetPhotos();
     }
     
@@ -62,9 +63,13 @@ export class AppComponent implements OnInit {
        this.flickrService.getPublicPhotos().subscribe(photos => this.photos = photos);
     }
     
-    setSort(id: string): void {
-        this.sortBy = id;
-        this.triggerGetPhotos();
+    setSort(sortid: string): void {
+        if(this.sortBy !== sortid)
+        {
+            this.sortBy = sortid;
+            this.pageNumber = 1;
+            this.triggerGetPhotos();
+        }
     }
     
     getPage(page: number) {

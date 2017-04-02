@@ -9,7 +9,7 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <li [ngClass]="{'active' : key.id === sortBy}" *ngFor="let key of sortKeys"><a (click)="setSort(key.id)">{{key.value}}</a></li>
+          <li [ngClass]="{'active' : key.id === sortBy}" *ngFor="let key of sortKeys"><a href="#" (click)="setSort(key.id)">{{key.value}}</a></li>
         </ul>
       </div>
     </div>
