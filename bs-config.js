@@ -7,5 +7,6 @@ module.exports = {
     }
     },
     open:false,
-    notify : false
+    notify : false,
+    ghostMode: false
 };
